@@ -32,7 +32,7 @@ public class ServicioEstacion {
            if(lineaActual.contains("Outside Temp")){
                encontrada=true;
                System.out.println("SI LA ENCONTRO!!!");
-               numeroLineas++;
+         
            }
 
         }
