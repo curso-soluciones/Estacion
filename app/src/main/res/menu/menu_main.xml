@@ -1,6 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/radiacionUV" android:title="Radiacion UV"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/pronostico" android:title="Pronóstico" android:orderInCategory="200" app:showAsAction="never"/>
+    <item android:id="@+id/salir" android:title="Salir" android:orderInCategory="300" app:showAsAction="never"/>
+
 </menu>

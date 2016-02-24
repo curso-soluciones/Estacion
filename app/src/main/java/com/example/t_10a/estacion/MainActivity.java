@@ -9,9 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+String temperaturaActual="--";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +47,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.radiacionUV) {
             return true;
+        }else if(id==R.id.pronostico){
+
+        }else if(id==R.id.salir){
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -58,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
       protected Integer doInBackground(String... params) {
           try{
               System.out.println(cargar());
+              temperaturaActual=cargar();
           }catch(Exception e)
           {
             System.out.println("Algo malo sucedio:"+e.getMessage());
@@ -68,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
       @Override
       protected void onPostExecute(Integer integer) {
           super.onPostExecute(integer);
+       TextView tv= (TextView) findViewById(R.id.textoTemperaturaActual);
+          tv.setText(temperaturaActual);
+
 
 
       }

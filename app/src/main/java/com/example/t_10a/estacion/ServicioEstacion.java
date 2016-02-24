@@ -1,7 +1,5 @@
 package com.example.t_10a.estacion;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -25,18 +23,22 @@ public class ServicioEstacion {
         String lineaActual="nada";
         while((lineaActual=reader.readLine())!=null){
 
-            if(encontrada && numeroLineas<=1){
+            if(encontrada && numeroLineas<=0){
                 System.out.println(lineaActual);
+                int indice1=lineaActual.indexOf(">")+1;
+                int indice2=lineaActual.indexOf("</");
+
+                 mensaje= lineaActual.substring(indice1,indice2);
                 numeroLineas++;
             }
            if(lineaActual.contains("Outside Temp")){
                encontrada=true;
                System.out.println("SI LA ENCONTRO!!!");
-         
+
            }
 
         }
-        System.out.println("este se ve una vez por estar afuera del while");
+        System.out.println("este se ve una vez por estar afuera del while:"+mensaje);
 
 
 
