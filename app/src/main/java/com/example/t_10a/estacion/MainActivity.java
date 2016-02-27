@@ -1,5 +1,6 @@
 package com.example.t_10a.estacion;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -48,8 +49,14 @@ String temperaturaActual="--";
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.radiacionUV) {
+            Intent intent=new Intent(getApplicationContext(), ActividadRadiacionUV.class);
+            startActivity(intent);
+
             return true;
         }else if(id==R.id.pronostico){
+
+            Intent intent=new Intent(getApplicationContext(), ActividadPronostico.class);
+            startActivity(intent);
 
         }else if(id==R.id.salir){
             finish();
