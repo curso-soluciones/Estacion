@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 String temperaturaActual="--";
+public static String radiacionActual="--";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,10 @@ String temperaturaActual="--";
         //noinspection SimplifiableIfStatement
         if (id == R.id.radiacionUV) {
             Intent intent=new Intent(getApplicationContext(), ActividadRadiacionUV.class);
+            Tareauv tarea=new Tareauv();
+            tarea.execute(null,null,null);
             startActivity(intent);
+
 
             return true;
         }else if(id==R.id.pronostico){
@@ -91,7 +95,43 @@ String temperaturaActual="--";
            ServicioEstacion servicio=new ServicioEstacion();
           return servicio.leerEstacion();
       }
-  }
+
+
+      }
+
+    class  Tareauv extends AsyncTask<String, Integer, Integer> {
+
+        @Override
+        protected Integer doInBackground(String... params) {
+            try{
+                System.out.println(cargar());
+                radiacionActual=cargar();
+            }catch(Exception e)
+            {
+                System.out.println("Algo malo sucedio:"+e.getMessage());
+            }
+            return 0;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+            TextView tv= (TextView) findViewById(R.id.textoTemperaturaActual);
+            tv.setText(radiacionActual);
+
+
+
+        }
+        public String cargar()throws Exception{
+            ServicioEstacion servicio=new ServicioEstacion();
+            return servicio.leerUV();
+        }
+
+
+    }
+
+
+
 
 
 }
